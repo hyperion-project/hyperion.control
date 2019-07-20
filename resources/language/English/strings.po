@@ -1,0 +1,167 @@
+# Kodi Media Center language file
+# Addon Name: Hyperion Control
+# Addon id: script.service.hyperion-control
+# Addon Provider: hyperion-project
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Kodi Addons\n"
+"Report-Msgid-Bugs-To: hyperion-project.org\n"
+"Last-Translator: hyperion-project\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#32000"
+msgid "General"
+msgstr ""
+
+msgctxt "#32001"
+msgid "Hyperion IP"
+msgstr ""
+
+msgctxt "#32002"
+msgid "Hyperion Webserver Port"
+msgstr ""
+
+msgctxt "#32003"
+msgid "Switch automatically between 2D/3D"
+msgstr ""
+
+msgctxt "#32004"
+msgid "Enable Hyperion on startup"
+msgstr ""
+
+msgctxt "#32005"
+msgid "Disable Hyperion on shutdown"
+msgstr ""
+
+msgctxt "#32006"
+msgid "Enable Debug"
+msgstr ""
+
+msgctxt "#32007"
+msgid "Show changelog after update"
+msgstr ""
+
+msgctxt "#32008"
+msgid "Authorization Token"
+msgstr ""
+
+msgctxt "#32025"
+msgid "Component"
+msgstr ""
+
+msgctxt "#32026"
+msgid "Enable the chosen component in these situations else disable it."
+msgstr ""
+
+msgctxt "#32027"
+msgid "Hyperion component"
+msgstr ""
+
+msgctxt "#32028"
+msgid "Enable during video playback"
+msgstr ""
+
+msgctxt "#32029"
+msgid "Enable during music playback"
+msgstr ""
+
+msgctxt "#32030"
+msgid "Enable during player pause"
+msgstr ""
+
+msgctxt "#32031"
+msgid "Enable in Kodi menu"
+msgstr ""
+
+msgctxt "#32032"
+msgid "Enable during active screensaver"
+msgstr ""
+
+msgctxt "#32040"
+msgid "Platform Capture"
+msgstr ""
+
+msgctxt "#32041"
+msgid "USB Capture"
+msgstr ""
+
+msgctxt "#32042"
+msgid "LED Hardware"
+msgstr ""
+
+msgctxt "#32043"
+msgid "Smoothing"
+msgstr ""
+
+msgctxt "#32044"
+msgid "Blackborder detection"
+msgstr ""
+
+msgctxt "#32045"
+msgid "Forwarder"
+msgstr ""
+
+msgctxt "#32046"
+msgid "UDP Listener"
+msgstr ""
+
+msgctxt "#32047"
+msgid "Boblight Server"
+msgstr ""
+
+msgctxt "#32048"
+msgid "Hyperion"
+msgstr ""
+
+msgctxt "#32100"
+msgid "Welcome to Hyperion Control"
+msgstr ""
+
+msgctxt "#32101"
+msgid "Would you like to search for a Hyperion Server and adjust settings?"
+msgstr ""
+
+msgctxt "#32102"
+msgid "Select a Hyperion Server, we found more than one"
+msgstr ""
+
+msgctxt "#32103"
+msgid "We found the following Hyperion Server for usage"
+msgstr ""
+
+msgctxt "#32104"
+msgid "We are sorry, no Hyperion Server has been found. You need to configure IP address and port by hand"
+msgstr ""
+
+msgctxt "#32105"
+msgid "The Authorization Token isn't valid"
+msgstr ""
+
+msgctxt "#32150"
+msgid "Execute"
+msgstr "Ausführen"
+
+msgctxt "#32151"
+msgid "Execute a specific task you might need again.[CR]Select a task from the tasklist and press OK to close the settings dialog."
+msgstr ""
+
+msgctxt "#32152"
+msgid "The addon will handle your request immediately.[CR]Be aware that the addon should be already enabled"
+msgstr ""
+
+msgctxt "#32153"
+msgid "Tasklist"
+msgstr ""
+
+msgctxt "#32154"
+msgid "No Task"
+msgstr ""
+
+msgctxt "#32155"
+msgid "Search: Hyperion Server"
+msgstr ""

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.service.hyperion-control" name="Hyperion Control" version="1.0.0" provider-name="hyperion-project, brindosch">
+  <requires>
+	<import addon="xbmc.addon"  version="17.0.0"/>
+    <import addon="xbmc.python" version="2.25.0"/>
+	<import addon="script.module.simplejson" version="3.3.0"/>
+	<import addon="script.module.httplib2" version="0.8.0"/>
+  </requires>
+  <extension point="xbmc.service" library="service.py" start="login">
+    <provides>service</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Control Hyperion Ambilight</summary>
+    <summary lang="de">Hyperion Ambilight Steuerung</summary>
+    <description lang="en">Enable and disable components (like capture) of Hyperion automatically based on playing/screensaver state of Kodi[CR]-Supports auto detection of Hyperion Servers[CR]-Token authentication</description>
+    <description lang="de">Aktiviere und deaktiviere automatisch Hyperion Komponenten basierend auf dem aktuellen Kodi Status[CR]-Unterstützt Hyperion Server suche[CR]-Token Autorisierung</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license>MIT</license>
+    <forum>https://forum.hyperion-project.org</forum>
+    <website>https://www.hyperion-project.org</website>
+    <email></email>
+    <source>https://github.com/hyperion-project</source>
+    <news>
+      1.0.0
+      - Added support for server search
+      - Added support token authentication
+      - Fixed issue where kodi api does not properly announce video playing states
+    </news>
+	<assets>
+		<icon>resources/media/icon.png</icon>
+		<fanart>resources/media/fanart.jpg</fanart>
+		<screenshot>resources/media/fanart.jpg</screenshot>
+	</assets>
+  </extension>
+</addon>
