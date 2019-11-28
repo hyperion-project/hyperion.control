@@ -49,14 +49,14 @@ def intToCompString(comp):
     }
     return switch.get(comp, "NOT_FOUND")
 
-def modeTo3D(self, mode):
+def modeTo3D(mode=None):
     switch = {
         "split_vertical": "3DSBS",
         "split_horizontal": "3DTAB",
     }
     return switch.get(mode, "2D")
 
-def getStereoscopeMode(self):
+def getStereoscopeMode():
     try:
         response = json.loads(xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"GUI.GetProperties","params":{"properties":["stereoscopicmode"]},"id":669}'))
         mode = response["result"]["stereoscopicmode"]["mode"]
