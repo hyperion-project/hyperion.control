@@ -17,11 +17,19 @@
 #
 
 import socket
-import httplib
-import StringIO
+from .utils import log, isPy3, bytesEncodeUtf8
+
+if isPy3():
+    import http.client as httplib
+    #from io import StringIO
+else:
+    import httplib
+    #from StringIO import StringIO
+
+from io import BytesIO
 
 class SSDPResponse(object):
-    class _FakeSocket(StringIO.StringIO):
+    class _FakeSocket(BytesIO):
         def makefile(self, *args, **kw):
             return self
     def __init__(self, response):
@@ -47,7 +55,7 @@ def discover(service, timeout=3, retries=1, mx=2):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
-        sock.sendto(message.format(*group, st=service, mx=mx), group)
+        sock.sendto(bytesEncodeUtf8(message.format(*group, st=service, mx=mx)), group)
         while True:
             try:
                 response = SSDPResponse(sock.recv(1024))

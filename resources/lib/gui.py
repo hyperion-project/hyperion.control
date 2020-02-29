@@ -1,6 +1,6 @@
 import xbmcgui
-import ssdp
-from utils import log, openSettings, getLS, getSetting, setSetting, getAddonVersion, getAddonChangelog, updateSavedAddonVersion
+from . import ssdp
+from .utils import log, openSettings, getLS, getSetting, setSetting, getAddonVersion, getAddonChangelog, updateSavedAddonVersion
 
 def notifyUser(message,time=3000, icon=xbmcgui.NOTIFICATION_INFO):
     xbmcgui.Dialog().notification('Hyperion Control', message.encode('utf-8'), icon, time)
@@ -21,6 +21,7 @@ def getSSDPData(data):
 
 def doSSDPDiscovery():
     searchTarget = "urn:hyperion-project.org:device:basic:1"
+    #searchTarget = "urn:schemas-upnp-org:device:basic:1"
     filteredResponse = []
     ipPortUsnList = []
     selectedServer = -1
@@ -58,5 +59,4 @@ def doInitialWizard():
 
 def doChangelogDisplay():
     if getSetting('currAddonVersion') != getAddonVersion():
-        updateSavedAddonVersion()
         xbmcgui.Dialog().textviewer('Hyperion Control - Changelog', getAddonChangelog())

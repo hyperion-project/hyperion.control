@@ -1,5 +1,7 @@
-from utils import log
+from .utils import log, bytesDecodeUtf8
+from .gui import notifyUser
 import httplib2
+import simplejson as json
 
 class Connection:
     def __init__(self):
@@ -20,8 +22,14 @@ class Connection:
         self.__url = "http://"+ip+":"+str(port)+"/json-rpc"
 
     def send(self, body):
+        log("Send to: "+self.__url+" payload: "+body)
         try:
             response, content = self.__http.request(self.__url, 'POST', headers=self.__headers, body=body)
+            jsonContent = json.loads(bytesDecodeUtf8(content))
+            if not jsonContent["success"]:
+                if jsonContent["error"] == "No Authorization":
+                    notifyUser("Error: No Authorization, API Token required")
+                log("Error: "+jsonContent["error"])
         except:
             pass
 
