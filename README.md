@@ -22,5 +22,12 @@ For example playing a video should enable screen capture, if you pause the video
 ### Feedback
 - Please open a github issue with (detailed) feedback
 
+### Contributing  
+Contributions are welcome! Feel free to join us! We are looking always for people who wants to participate.  
+[![Contributors](https://img.shields.io/github/contributors/hyperion-project/hyperion.control.svg)](https://github.com/hyperion-project/hyperion.control/graphs/contributors)
+
+For an example, you can participate in the translation.  
+[![Join Translation](https://img.shields.io/badge/POEditor-translate-green.svg)](https://poeditor.com/join/project/WauIsJeEx4)
+
 ### Credits
 - Dan Krause for the SSDP client
