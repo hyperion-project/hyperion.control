@@ -21,10 +21,8 @@ from .utils import log, isPy3, bytesEncodeUtf8
 
 if isPy3():
     import http.client as httplib
-    #from io import StringIO
 else:
     import httplib
-    #from StringIO import StringIO
 
 from io import BytesIO
 

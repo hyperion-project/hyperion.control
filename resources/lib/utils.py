@@ -51,7 +51,7 @@ def intToCompString(comp):
     return switch.get(comp, "NOT_FOUND")
 
 def isPy3():
-    return sys.version_info > (2, 7)
+    return sys.version_info[0] == 3
 
 def bytesDecodeUtf8(data):
     if isPy3():
