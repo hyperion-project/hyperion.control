@@ -37,15 +37,14 @@ def updateSavedAddonVersion():
     
 def intToCompString(comp):
     switch = {
-        0: "GRABBER",
-        1: "V4L",
-        2: "LEDDEVICE",
-        3: "SMOOTHING",
-        4: "BLACKBORDER",
-        5: "FORWARDER",
-        6: "UDPLISTENER",
-        7: "BOBLIGHTSERVER",
-        8: "ALL",
+        0: "COMP_GRABBER",
+        1: "COMP_V4L",
+        2: "COMP_LEDDEVICE",
+        3: "COMP_SMOOTHING",
+        4: "COMP_BLACKBORDER",
+        5: "COMP_FORWARDER",
+        6: "COMP_BOBLIGHTSERVER",
+        7: "COMP_ALL",
     }
     return switch.get(comp, "NOT_FOUND")
 
