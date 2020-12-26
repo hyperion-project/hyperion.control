@@ -5,7 +5,7 @@ import sys
 ADDON = xbmcaddon.Addon()
 ADDONNAME = ADDON.getAddonInfo('id')
 
-def log(message, level=xbmc.LOGNOTICE):
+def log(message, level=xbmc.LOGINFO):
     xbmc.log('[%s] %s' % (ADDONNAME, message.encode('utf-8')), level)
 
 def getSetting(opt):
