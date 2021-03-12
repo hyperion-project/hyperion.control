@@ -1,4 +1,4 @@
-# Hyperion Control [![Total alerts](https://img.shields.io/lgtm/alerts/g/hyperion-project/hyperion.control.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/hyperion-project/hyperion.control/alerts/)
+# Hyperion Control fork for Kodi 19 (Matrix)
 
 This is a KodiMatrix ONLY fork of Hyperion Control which is an addon for Kodi Mediacenter that observes Kodi events (playing state, screensaver, ...). Based on these events you can control Hyperion components to enable or disable accordingly.
 
