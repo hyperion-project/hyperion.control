@@ -1,5 +1,6 @@
 import xbmc, xbmcaddon
 import simplejson as json
+import sys
 
 ADDON = xbmcaddon.Addon()
 ADDONNAME = ADDON.getAddonInfo('id')
@@ -48,6 +49,21 @@ def intToCompString(comp):
     }
     return switch.get(comp, "NOT_FOUND")
 
+def isPy3():
+    return sys.version_info[0] == 3
+
+def bytesDecodeUtf8(data):
+    if isPy3():
+        return data.decode('utf-8')
+    else:
+        return data
+
+def bytesEncodeUtf8(data):
+    if isPy3():
+        return data.encode('utf-8')
+    else:
+        return data
+
 def modeTo3D(mode=None):
     switch = {
         "split_vertical": "3DSBS",
@@ -57,7 +73,7 @@ def modeTo3D(mode=None):
 
 def getStereoscopeMode():
     try:
-        response = json.loads(xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"GUI.GetProperties","params":{"properties":["stereoscopicmode"]},"id":669}'))
+        response = json.loads(bytesDecodeUtf8(xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"GUI.GetProperties","params":{"properties":["stereoscopicmode"]},"id":669}')))
         mode = response["result"]["stereoscopicmode"]["mode"]
         return modeTo3D(mode)
 
