@@ -1,7 +1,7 @@
 import xbmc, xbmcgui
-from resources.lib.utils import *
-from resources.lib.gui import doInitialWizard, doChangelogDisplay, doSSDPDiscovery, notifyUser
-from resources.lib.connection import Connection
+from lib.utils import *
+from lib.gui import doInitialWizard, doChangelogDisplay, doSSDPDiscovery, notifyUser
+from lib.connection import Connection
 
 class XBMCPlayer(xbmc.Player):
     """ xbmc player class """
@@ -10,8 +10,8 @@ class XBMCPlayer(xbmc.Player):
         self.__playerPause = False
         self.__observers = []
 
-    def __del__(self):
-        del self.xbmc.Player
+    # def __del__(self):
+        # del self.xbmc.Player
 
     def register_observer(self, observer):
         self.__observers.append(observer)
@@ -51,8 +51,8 @@ class XBMCMonitor(xbmc.Monitor):
         self.__screensaverActive = False
         self.__observers = []
 
-    def __del__(self):
-        del self.xbmc.Monitor
+    # def __del__(self):
+        # del self.xbmc.Monitor
 
     def register_observer(self, observer):
         self.__observers.append(observer)

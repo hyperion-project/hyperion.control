@@ -124,7 +124,7 @@ msgstr "Willkommen zu Hyperion Control"
 
 msgctxt "#32101"
 msgid "Would you like to search for a Hyperion Server and adjust settings?"
-msgstr "Möchtest du nach einem Hyperion Server suchen und die Einstellungen anpassen?"
+msgstr "Hyperion Server suchen und Einstellungen anpassen?"
 
 msgctxt "#32102"
 msgid "Select a Hyperion Server, we found more than one"

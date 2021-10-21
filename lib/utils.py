@@ -5,7 +5,7 @@ import sys
 ADDON = xbmcaddon.Addon()
 ADDONNAME = ADDON.getAddonInfo('id')
 
-def log(message, level=xbmc.LOGNOTICE):
+def log(message, level=xbmc.LOGINFO):
     xbmc.log('[%s] %s' % (ADDONNAME, message.encode('utf-8')), level)
 
 def getSetting(opt):
@@ -35,34 +35,26 @@ def validateAuthToken(authToken):
 
 def updateSavedAddonVersion():
     setSetting('currAddonVersion', getAddonVersion())
-    
+
 def intToCompString(comp):
     switch = {
-        0: "COMP_GRABBER",
-        1: "COMP_V4L",
-        2: "COMP_LEDDEVICE",
-        3: "COMP_SMOOTHING",
-        4: "COMP_BLACKBORDER",
-        5: "COMP_FORWARDER",
-        6: "COMP_BOBLIGHTSERVER",
-        7: "COMP_ALL",
+        0: "GRABBER",
+        1: "V4L",
+        2: "LEDDEVICE",
+        3: "SMOOTHING",
+        4: "BLACKBORDER",
+        5: "FORWARDER",
+        6: "UDPLISTENER",
+        7: "BOBLIGHTSERVER",
+        8: "ALL",
     }
     return switch.get(comp, "NOT_FOUND")
 
-def isPy3():
-    return sys.version_info[0] == 3
-
 def bytesDecodeUtf8(data):
-    if isPy3():
-        return data.decode('utf-8')
-    else:
-        return data
+    return data.decode('utf-8')
 
 def bytesEncodeUtf8(data):
-    if isPy3():
-        return data.encode('utf-8')
-    else:
-        return data
+    return data.encode('utf-8')
 
 def modeTo3D(mode=None):
     switch = {

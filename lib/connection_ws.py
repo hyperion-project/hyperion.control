@@ -1,11 +1,14 @@
-from utils import log
+from lib.utils import log
 import xbmc, xbmcaddon, time
 import websocket
 
 class Connection:
     def __init__(self):
-        self.__url = "ws://192.168.0.12:19444"
+        # self.__url = "ws://192.168.0.11:19446"
+        # self.__url = "ws://192.168.0.12:19444"
+        self.__url = "ws://192.168.0.13:19444"
         self.__ip = "127.0.0.1"
+        # self.__port = "19446"
         self.__port = "19444"
         self.__connected = False
         self.__ws = websocket.WebSocketApp(url=self.__url , on_message = self.on_message, on_error = self.on_error, on_close = self.on_close, on_open = self.on_open)

@@ -17,17 +17,12 @@
 #
 
 import socket
-from .utils import log, isPy3, bytesEncodeUtf8
-
-if isPy3():
-    import http.client as httplib
-else:
-    import httplib
-
-from io import BytesIO
+import http.client as httplib
+import io
+from .utils import log, bytesEncodeUtf8
 
 class SSDPResponse(object):
-    class _FakeSocket(BytesIO):
+    class _FakeSocket(io.StringIO):
         def makefile(self, *args, **kw):
             return self
     def __init__(self, response):
@@ -60,4 +55,4 @@ def discover(service, timeout=3, retries=1, mx=2):
                 responses[response.location] = response
             except socket.timeout:
                 break
-    return responses.values()
+    return list(responses.values())

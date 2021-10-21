@@ -1,5 +1,5 @@
-from .utils import log, bytesDecodeUtf8
-from .gui import notifyUser
+from lib.utils import log, bytesDecodeUtf8
+from lib.gui import notifyUser
 import httplib2
 import simplejson as json
 
