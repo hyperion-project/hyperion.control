@@ -1,6 +1,6 @@
 import xbmcgui
-import ssdp
-from utils import log, openSettings, getLS, getSetting, setSetting, getAddonVersion, getAddonChangelog, updateSavedAddonVersion
+import lib.ssdp as ssdp
+from lib.utils import openSettings, getLS, getSetting, setSetting, getAddonVersion, getAddonChangelog
 
 def notifyUser(message,time=3000, icon=xbmcgui.NOTIFICATION_INFO):
     xbmcgui.Dialog().notification('Hyperion Control', message.encode('utf-8'), icon, time)
@@ -37,7 +37,7 @@ def doSSDPDiscovery():
         if len(filteredResponse) > 1:
             selectedServer = xbmcgui.Dialog().select(getLS(32102), buildSelectList(ipPortUsnList))
         else:
-            xbmcgui.Dialog().ok('Hyperion Control', getLS(32103), '-> '+ipPortUsnList[0]["ip"]+':'+str(ipPortUsnList[0]["port"]))
+            xbmcgui.Dialog().ok('Hyperion Control', getLS(32103) + '[CR]' + ipPortUsnList[0]["ip"]+':'+str(ipPortUsnList[0]["port"]))
             selectedServer = 0
 
         #check user input and push settings if valid
@@ -51,12 +51,12 @@ def doSSDPDiscovery():
     return
 
 def doInitialWizard():
-    if xbmcgui.Dialog().yesno('Hyperion Control',getLS(32100),getLS(32101)):
+    if xbmcgui.Dialog().yesno('Hyperion Control',getLS(32100) + "[CR]" + getLS(32101)):
         doSSDPDiscovery()
         openSettings()
     return
 
 def doChangelogDisplay():
     if getSetting('currAddonVersion') != getAddonVersion():
-        updateSavedAddonVersion()
+        # updateSavedAddonVersion()
         xbmcgui.Dialog().textviewer('Hyperion Control - Changelog', getAddonChangelog())

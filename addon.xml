@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="script.service.hyperion-control" name="Hyperion Control" version="1.0.1" provider-name="hyperion-project, brindosch">
+<addon id="script.service.hyperion-control" name="Hyperion Control" version="19.0.1" provider-name="hyperion-project">
   <requires>
 	<import addon="xbmc.addon"  version="17.0.0"/>
-    <import addon="xbmc.python" version="2.25.0"/>
+    <import addon="xbmc.python" version="3.0.0"/>
 	<import addon="script.module.simplejson" version="3.3.0"/>
 	<import addon="script.module.httplib2" version="0.8.0"/>
   </requires>
@@ -18,11 +18,15 @@
     <language></language>
     <platform>all</platform>
     <license>MIT</license>
-    <forum>https://forum.hyperion-project.org</forum>
+    <forum>https://hyperion-project.org/forum</forum>
     <website>https://www.hyperion-project.org</website>
     <email></email>
-    <source>https://github.com/hyperion-project</source>
+    <source>https://github.com/hyperion-project/hyperion.control</source>
     <news>
+      19.0.1
+      - Kodi 19 support
+      - minor cleanups and corrections
+
       1.0.1
       - Fixed a crash with 3d mode @b-jesch
 
@@ -33,8 +37,8 @@
     </news>
 	<assets>
 		<icon>resources/media/icon.png</icon>
-		<fanart>resources/media/fanart.jpg</fanart>
-		<screenshot>resources/media/fanart.jpg</screenshot>
+		<fanart>resources/media/fanart.png</fanart>
+		<screenshot>resources/media/screenshot-01.png</screenshot>
 	</assets>
   </extension>
 </addon>

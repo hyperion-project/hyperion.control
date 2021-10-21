@@ -119,7 +119,7 @@ msgid "Hyperion"
 msgstr ""
 
 msgctxt "#32100"
-msgid "Welcome to Hyperion Control"
+msgid "Welcome to Hyperion Control!"
 msgstr ""
 
 msgctxt "#32101"
@@ -131,7 +131,7 @@ msgid "Select a Hyperion Server, we found more than one"
 msgstr ""
 
 msgctxt "#32103"
-msgid "We found the following Hyperion Server for usage"
+msgid "We found the following Hyperion Server for usage:"
 msgstr ""
 
 msgctxt "#32104"
