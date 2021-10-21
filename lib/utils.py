@@ -50,11 +50,20 @@ def intToCompString(comp):
     }
     return switch.get(comp, "NOT_FOUND")
 
+def isPy3():
+    return sys.version_info[0] == 3
+
 def bytesDecodeUtf8(data):
-    return data.decode('utf-8')
+    if isPy3():
+        return data.decode('utf-8')
+    else:
+        return data
 
 def bytesEncodeUtf8(data):
-    return data.encode('utf-8')
+    if isPy3():
+        return data.encode('utf-8')
+    else:
+        return data
 
 def modeTo3D(mode=None):
     switch = {

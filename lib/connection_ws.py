@@ -1,5 +1,4 @@
 from lib.utils import log
-import xbmc, xbmcaddon, time
 import websocket
 
 class Connection:

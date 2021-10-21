@@ -17,16 +17,18 @@
 #
 
 import socket
-import http.client as httplib
-import io
 from .utils import log, bytesEncodeUtf8
 
+import http.client
+
+from io import BytesIO
+
 class SSDPResponse(object):
-    class _FakeSocket(io.StringIO):
+    class _FakeSocket(BytesIO):
         def makefile(self, *args, **kw):
             return self
     def __init__(self, response):
-        r = httplib.HTTPResponse(self._FakeSocket(response))
+        r = http.client.HTTPResponse(self._FakeSocket(response))
         r.begin()
         self.location = r.getheader("location")
         self.usn = r.getheader("usn")
