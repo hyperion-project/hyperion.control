@@ -19,3 +19,4 @@ For example playing a video should enable screen capture, if you pause the video
 - Dan Krause for the SSDP client
 - Paulchen-Panther for service development
 - brindosch for service development
+- derBernhard for Kodi 19 migration
