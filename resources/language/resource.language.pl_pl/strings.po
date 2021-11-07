@@ -1,18 +1,11 @@
-# Kodi Media Center language file
-# Addon Name: Hyperion Control
-# Addon id: script.service.hyperion-control
-# Addon Provider: hyperion-project
-
 msgid ""
 msgstr ""
-"Project-Id-Version: Hyperion Control\n"
-"Report-Msgid-Bugs-To: hyperion-project.org\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
+"Project-Id-Version: Hyperion Control\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: 
 msgctxt "#32000"
@@ -100,11 +93,6 @@ msgid "Enable during active screensaver"
 msgstr "Włącz podczas aktywnego wygaszacza ekranu"
 
 #: 
-msgctxt "#32040"
-msgid "Screen Capture"
-msgstr "Przechwytywanie platformy"
-
-#: 
 msgctxt "#32041"
 msgid "USB Capture"
 msgstr "Przechwytywanie USB"
@@ -118,11 +106,6 @@ msgstr "Sprzęt LED"
 msgctxt "#32043"
 msgid "Smoothing"
 msgstr "Wygładzanie"
-
-#: 
-msgctxt "#32044"
-msgid "Blackbar detector"
-msgstr "Detekcja czarnych ramek"
 
 #: 
 msgctxt "#32045"
@@ -145,11 +128,6 @@ msgid "Hyperion"
 msgstr "Hyperion"
 
 #: 
-msgctxt "#32100"
-msgid "Welcome to Hyperion Control!"
-msgstr "Witaj w Hyperion Control!"
-
-#: 
 msgctxt "#32101"
 msgid "Would you like to search for a Hyperion Server and adjust settings?"
 msgstr "Czy chcesz wyszukać serwer Hyperion i dostosować ustawienia?"
@@ -158,11 +136,6 @@ msgstr "Czy chcesz wyszukać serwer Hyperion i dostosować ustawienia?"
 msgctxt "#32102"
 msgid "Select a Hyperion Server, we found more than one"
 msgstr "Wybierz serwer Hyperion, znaleziono więcej niż jeden"
-
-#: 
-msgctxt "#32103"
-msgid "We found the following Hyperion Server for usage:"
-msgstr "Znaleziono następujący serwer Hyperion:"
 
 #: 
 msgctxt "#32104"
@@ -203,4 +176,24 @@ msgstr "Brak zadania"
 msgctxt "#32155"
 msgid "Search: Hyperion Server"
 msgstr "Wyszukaj: Serwer Hyperion"
+
+#: 
+msgctxt "#32044"
+msgid "Blackbar detector"
+msgstr "Detekcja czarnych ramek"
+
+#: 
+msgctxt "#32040"
+msgid "Screen Capture"
+msgstr "Przechwytywanie platformy"
+
+#: 
+msgctxt "#32100"
+msgid "Welcome to Hyperion Control!"
+msgstr "Witaj w Hyperion Control!"
+
+#: 
+msgctxt "#32103"
+msgid "We found the following Hyperion Server for usage:"
+msgstr "Znaleziono następujący serwer Hyperion:"
 
