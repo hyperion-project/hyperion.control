@@ -93,11 +93,6 @@ msgid "Enable during active screensaver"
 msgstr "Enable during active screensaver"
 
 #: 
-msgctxt "#32040"
-msgid "Platform Capture"
-msgstr ""
-
-#: 
 msgctxt "#32041"
 msgid "USB Capture"
 msgstr "USB Capture"
@@ -111,11 +106,6 @@ msgstr "LED Hardware"
 msgctxt "#32043"
 msgid "Smoothing"
 msgstr "Smoothing"
-
-#: 
-msgctxt "#32044"
-msgid "Blackborder detection"
-msgstr "Blackborder detection"
 
 #: 
 msgctxt "#32045"
@@ -138,11 +128,6 @@ msgid "Hyperion"
 msgstr "Hyperion"
 
 #: 
-msgctxt "#32100"
-msgid "Welcome to Hyperion Control"
-msgstr ""
-
-#: 
 msgctxt "#32101"
 msgid "Would you like to search for a Hyperion Server and adjust settings?"
 msgstr "Would you like to search for a Hyperion Server and adjust settings?"
@@ -151,11 +136,6 @@ msgstr "Would you like to search for a Hyperion Server and adjust settings?"
 msgctxt "#32102"
 msgid "Select a Hyperion Server, we found more than one"
 msgstr "Select a Hyperion Server, we found more than one"
-
-#: 
-msgctxt "#32103"
-msgid "We found the following Hyperion Server for usage"
-msgstr ""
 
 #: 
 msgctxt "#32104"
@@ -200,7 +180,7 @@ msgstr "Search: Hyperion Server"
 #: 
 msgctxt "#32044"
 msgid "Blackbar detector"
-msgstr "Schwarzranderkennung"
+msgstr "Blackbar detector"
 
 #: 
 msgctxt "#32040"
