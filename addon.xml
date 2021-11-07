@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="script.service.hyperion-control" name="Hyperion Control" version="19.0.1" provider-name="hyperion-project">
+<addon id="script.service.hyperion-control" name="Hyperion Control" version="19.0.2" provider-name="hyperion-project">
   <requires>
 	<import addon="xbmc.addon"  version="17.0.0"/>
     <import addon="xbmc.python" version="3.0.0"/>
@@ -10,11 +10,11 @@
     <provides>service</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Control Hyperion Ambilight</summary>
-    <summary lang="de">Hyperion Ambilight Steuerung</summary>
-    <description lang="en">Enable and disable components (like capture) of Hyperion automatically based on playing/screensaver state of Kodi[CR]-Supports auto detection of Hyperion Servers[CR]-Token authentication</description>
-    <description lang="de">Aktiviere und deaktiviere automatisch Hyperion Komponenten basierend auf dem aktuellen Kodi Status[CR]-Unterstützt Hyperion Server suche[CR]-Token Autorisierung</description>
-    <disclaimer lang="en"></disclaimer>
+    <summary lang="en_GB">Control Hyperion Ambilight</summary>
+    <summary lang="de_DE">Hyperion Ambilight Steuerung</summary>
+    <description lang="en_GB">Enable and disable components (like capture) of Hyperion automatically based on playing/screensaver state of Kodi[CR]-Supports auto detection of Hyperion Servers[CR]-Token authentication</description>
+    <description lang="de_DE">Aktiviere und deaktiviere automatisch Hyperion Komponenten basierend auf dem aktuellen Kodi Status[CR]-Unterstützt Hyperion Server suche[CR]-Token Autorisierung</description>
+    <disclaimer lang="en_GB"></disclaimer>
     <language></language>
     <platform>all</platform>
     <license>MIT</license>
@@ -23,6 +23,9 @@
     <email></email>
     <source>https://github.com/hyperion-project/hyperion.control</source>
     <news>
+      19.0.2
+      - New languages: Español, Français, Polski
+
       19.0.1
       - Kodi 19 support
       - minor cleanups and corrections
