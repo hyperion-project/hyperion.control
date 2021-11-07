@@ -1,18 +1,11 @@
-# Kodi Media Center language file
-# Addon Name: Hyperion Control
-# Addon id: script.service.hyperion-control
-# Addon Provider: hyperion-project
-
 msgid ""
 msgstr ""
-"Project-Id-Version: Hyperion Control\n"
-"Report-Msgid-Bugs-To: hyperion-project.org\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
+"Project-Id-Version: Hyperion Control\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
 
 #: 
 msgctxt "#32000"
@@ -100,11 +93,6 @@ msgid "Enable during active screensaver"
 msgstr "Activer quand l'économiseur d'écran est actif"
 
 #: 
-msgctxt "#32040"
-msgid "Screen Capture"
-msgstr "Capture interne"
-
-#: 
 msgctxt "#32041"
 msgid "USB Capture"
 msgstr "Capture USB"
@@ -118,11 +106,6 @@ msgstr "LEDs"
 msgctxt "#32043"
 msgid "Smoothing"
 msgstr "Lissage"
-
-#: 
-msgctxt "#32044"
-msgid "Blackbar detector"
-msgstr "Détecteur de bandes noires"
 
 #: 
 msgctxt "#32045"
@@ -145,11 +128,6 @@ msgid "Hyperion"
 msgstr "Hyperion"
 
 #: 
-msgctxt "#32100"
-msgid "Welcome to Hyperion Control!"
-msgstr "Bienvenue dans l'addon Hyperion!"
-
-#: 
 msgctxt "#32101"
 msgid "Would you like to search for a Hyperion Server and adjust settings?"
 msgstr "Voulez vous chercher un serveur Hyperion et mettre à jour les paramètres ?"
@@ -158,11 +136,6 @@ msgstr "Voulez vous chercher un serveur Hyperion et mettre à jour les paramètr
 msgctxt "#32102"
 msgid "Select a Hyperion Server, we found more than one"
 msgstr "Plusieurs serveurs Hyperion ont été trouvés, veuillez en sélectionner un"
-
-#: 
-msgctxt "#32103"
-msgid "We found the following Hyperion Server for usage:"
-msgstr "Le serveur Hyperion suivant a été trouvé pour utilisation:"
 
 #: 
 msgctxt "#32104"
@@ -205,4 +178,24 @@ msgstr "Pas de tâche"
 msgctxt "#32155"
 msgid "Search: Hyperion Server"
 msgstr "Recherche : serveur Hyperion"
+
+#: 
+msgctxt "#32044"
+msgid "Blackbar detector"
+msgstr "Détecteur de bandes noires"
+
+#: 
+msgctxt "#32040"
+msgid "Screen Capture"
+msgstr "Capture interne"
+
+#: 
+msgctxt "#32100"
+msgid "Welcome to Hyperion Control!"
+msgstr "Bienvenue dans l'addon Hyperion!"
+
+#: 
+msgctxt "#32103"
+msgid "We found the following Hyperion Server for usage:"
+msgstr "Le serveur Hyperion suivant a été trouvé pour utilisation:"
 
