@@ -1,7 +1,8 @@
-import xbmc, xbmcgui
-from lib.utils import *
-from lib.gui import do_initial_wizard, do_changelog_display, do_ssdp_discovery, notify_user
-from lib.connection import Connection
+import xbmc
+from resources.lib.gui import do_initial_wizard, do_changelog_display, do_ssdp_discovery, notify_user
+from resources.lib.connection import Connection
+from resources.lib.utils import *
+
 
 class XBMCPlayer(xbmc.Player):
     """ xbmc player class """

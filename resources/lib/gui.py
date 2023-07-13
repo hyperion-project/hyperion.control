@@ -1,6 +1,6 @@
 import xbmcgui
-import lib.ssdp as ssdp
-from lib.utils import open_settings, get_localized_string, get_setting, set_setting, get_addon_version, get_addon_changelog
+from resources import lib as ssdp
+from resources.lib.utils import open_settings, get_localized_string, get_setting, set_setting, get_addon_version, get_addon_changelog
 
 def notify_user(message, time=3000, icon=xbmcgui.NOTIFICATION_INFO):
     xbmcgui.Dialog().notification('Hyperion Control', message.encode('utf-8'), icon, time)

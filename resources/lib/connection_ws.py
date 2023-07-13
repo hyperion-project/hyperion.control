@@ -1,4 +1,4 @@
-from lib.utils import log
+from resources.lib.utils import log
 import websocket
 
 class Connection:

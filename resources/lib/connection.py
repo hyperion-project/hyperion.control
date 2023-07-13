@@ -1,6 +1,6 @@
 import contextlib
-from lib.utils import log, bytes_decode_utf8
-from lib.gui import notify_user
+from resources.lib.utils import log, bytes_decode_utf8
+from resources.lib.gui import notify_user
 import httplib2
 import simplejson as json
 
