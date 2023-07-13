@@ -73,14 +73,14 @@ class XBMCMonitor(xbmc.Monitor):
 
 class Hyperion:
     """ Main instance class """
-    def __init__(self):
+    def __init__(self, player: XBMCPlayer, monitor: XBMCMonitor) -> None:
         self.prev_video_mode = "2D"
         self.prev_comp_state = None
         self.initialized = False
 
-        self.player = XBMCPlayer()
+        self.player = player
         self.player.register_observer(self)
-        self.monitor = XBMCMonitor()
+        self.monitor = monitor
         self.monitor.register_observer(self)
         self.connection = Connection()
 
@@ -162,16 +162,11 @@ class Hyperion:
         log(f'ChangelogOnUpdate:     {self.opt_show_changelog_on_update}')
         log(f'tasks:                 {self.tasks}')
 
-    def daemon(self):
-        # Keep the Hyperion class alive, aborts if Kodi requests it
-        while not self.monitor.abortRequested():
-            if self.monitor.waitForAbort():
-                # last steps before script shutdown
-                if self.disable_hyperion:
-                    self.connection.send_component_state("ALL", False)
-
-                log("Hyperion-control stopped")
-                break
+    def stop(self):
+        """Stops the hyperion control."""
+        if self.disable_hyperion:
+            self.connection.send_component_state("ALL", False)
+        log("Hyperion-control stopped")
 
     def update_state(self):
         # update state of the chosen component based on latest settings/kodi states and send the state to hyperion
@@ -212,8 +207,15 @@ class Hyperion:
 
 
 def main():
-    hyperion = Hyperion()
-    hyperion.daemon()
+    player = XBMCPlayer()
+    monitor = XBMCMonitor()
+    hyperion = Hyperion(player, monitor)
+
+    while not monitor.abortRequested():
+        if monitor.waitForAbort(10):
+            hyperion.stop()
+            break
+
 
 
 if __name__ == '__main__':
