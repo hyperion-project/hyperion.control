@@ -114,16 +114,11 @@ msgstr "Továbbító"
 
 #: 
 msgctxt "#32046"
-msgid "UDP Listener"
-msgstr "UDP figyelő"
-
-#: 
-msgctxt "#32047"
 msgid "Boblight Server"
 msgstr "Boblight Server"
 
 #: 
-msgctxt "#32048"
+msgctxt "#32047"
 msgid "Hyperion"
 msgstr "Hyperion"
 

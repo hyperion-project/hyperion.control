@@ -16,45 +16,57 @@
 # All credits to Dan Krause at Github: https://gist.github.com/dankrause/6000248
 #
 
-import socket
-from .utils import bytes_encode_utf8
-
 import http.client
-
+import socket
 from io import BytesIO
 
-class SSDPResponse(object):
-    class _FakeSocket(BytesIO):
-        def makefile(self, *args, **kw):
-            return self
+
+class _FakeSocket(BytesIO):
+    def makefile(self, *args, **kw):
+        return self
+
+class SSDPResponse:
+
     def __init__(self, response):
-        r = http.client.HTTPResponse(self._FakeSocket(response))
+        r = http.client.HTTPResponse(_FakeSocket(response))
         r.begin()
         self.location = r.getheader("location")
         self.usn = r.getheader("usn")
         self.st = r.getheader("st")
         self.cache = r.getheader("cache-control").split("=")[1]
+
     def __repr__(self):
         return "<SSDPResponse({location}, {st}, {usn})>".format(**self.__dict__)
 
 def discover(service, timeout=3, retries=1, mx=2):
     group = ("239.255.255.250", 1900)
-    message = "\r\n".join([
+    lines = [
         'M-SEARCH * HTTP/1.1',
-        'HOST: {0}:{1}',
+        f'HOST: {group[0]}:{group[1]}',
         'MAN: "ssdp:discover"',
-        'ST: {st}','MX: {mx}','',''])
+        f'ST: {service}',
+        f'MX: {mx}',
+        '',
+        ''
+    ]
+    message = "\r\n".join(lines).encode("utf-8")
     socket.setdefaulttimeout(timeout)
-    responses = {}
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    responses = []
     for _ in range(retries):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
-        sock.sendto(bytes_encode_utf8(message.format(*group, st=service, mx=mx)), group)
+        sock.sendto(message, group)
         while True:
             try:
-                response = SSDPResponse(sock.recv(1024))
-                responses[response.location] = response
+                response, address = sock.recvfrom(1024)
+                res_data = SSDPResponse(response)
+                if res_data.st != service:
+                    continue
+                responses.append(
+                    {"ip": address[0], "port": address[1], "usn": res_data.usn}
+                )
             except socket.timeout:
                 break
-    return list(responses.values())
+    sock.close()
+    return responses

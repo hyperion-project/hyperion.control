@@ -114,16 +114,11 @@ msgstr "Przekierowywacz"
 
 #: 
 msgctxt "#32046"
-msgid "UDP Listener"
-msgstr "Nasłuch UDP"
-
-#: 
-msgctxt "#32047"
 msgid "Boblight Server"
 msgstr "Server Boblight"
 
 #: 
-msgctxt "#32048"
+msgctxt "#32047"
 msgid "Hyperion"
 msgstr "Hyperion"
 

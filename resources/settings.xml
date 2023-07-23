@@ -15,7 +15,7 @@
 	</category>
 	<category label="32025">
 		<setting type="lsep" label="32026"/>
-		<setting id="targetComponent" type="select" label="32027" default="0" lvalues="32040|32041|32042|32043|32044|32045|32046|32047|32048" />
+		<setting id="targetComponent" type="select" label="32027" default="0" lvalues="32040|32041|32042|32043|32044|32045|32046|32047" />
 		<setting id="videoEnabled" type="bool" label="32028" default="true" />
 		<setting id="audioEnabled" type="bool" label="32029" default="true" />
 		<setting id="pauseEnabled" type="bool" label="32030" default="false" />
