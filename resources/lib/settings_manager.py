@@ -25,10 +25,13 @@ INT_TO_COMP_STRING = {
 class SettingsManager:
     """Class which contains all addon settings."""
 
-    def __init__(self, settings: xbmcaddon.Settings, logger: Logger) -> None:
+    def __init__(
+        self, settings: xbmcaddon.Settings, logger: Logger, addon: xbmcaddon.Addon
+    ) -> None:
         self._logger = logger
         self.rev = 0
         self._settings = settings
+        self._addon = addon
         self.current_version: str = ""
         self._address: str = "localhost"
         self._port: int = 8090
@@ -87,17 +90,17 @@ class SettingsManager:
         return self.show_changelog_on_update and not self.first_run
 
     def _set_string(self, name: str, value: str) -> None:
-        self._settings.setString(name, value)
+        self._addon.setSettingString(name, value)
         outcome = value == self._settings.getString(name)
         self._log_set_outcome(name, value, outcome)
 
     def _set_int(self, name: str, value: int) -> None:
-        self._settings.setInt(name, value)
+        self._addon.setSettingInt(name, value)
         outcome = value == self._settings.getInt(name)
         self._log_set_outcome(name, value, outcome)
 
     def _set_bool(self, name: str, value: bool) -> None:
-        self._settings.setBool(name, value)
+        self._addon.setSettingBool(name, value)
         outcome = value == self._settings.getBool(name)
         self._log_set_outcome(name, value, outcome)
 

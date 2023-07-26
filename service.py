@@ -13,7 +13,7 @@ from resources.lib.utils import get_stereoscopic_mode
 def main() -> None:
     addon = xbmcaddon.Addon("script.service.hyperion-control")
     logger = Logger(addon.getAddonInfo("name"))
-    settings_manager = SettingsManager(addon.getSettings(), logger)
+    settings_manager = SettingsManager(addon.getSettings(), logger, addon)
     gui_handler = GuiHandler(addon, settings_manager)
     api_client = ApiClient(logger, gui_handler, settings_manager)
 
