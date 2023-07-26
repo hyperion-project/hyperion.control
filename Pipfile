@@ -4,10 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+
+[dev-packages]
 kodistubs = "*"
 kodi-addon-checker = "*"
 
-[dev-packages]
-
 [requires]
 python_version = "3.11"
+
+[scripts]
+pre-commit = "pre-commit install"
+lint = "pre-commit run --all"
