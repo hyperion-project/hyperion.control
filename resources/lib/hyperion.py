@@ -1,27 +1,29 @@
-from typing import Callable
+"""Hyperion Controller."""
+from __future__ import annotations
 
-import xbmcaddon
+from collections.abc import Callable
 
-from resources.lib.api_client import ApiClient
-from resources.lib.gui import GuiHandler
-from resources.lib.logger import Logger
-from resources.lib.settings_manager import SettingsManager
+from resources.lib.interfaces import ApiClient
+from resources.lib.interfaces import GuiHandler
+from resources.lib.interfaces import Logger
+from resources.lib.interfaces import SettingsManager
 
 
 class Hyperion:
-    """ Main instance class """
+    """Main instance class."""
+
     def __init__(
         self,
-        addon: xbmcaddon.Addon,
         settings_manager: SettingsManager,
         logger: Logger,
         gui_handler: GuiHandler,
         api_client: ApiClient,
         get_video_mode_function: Callable[[], str],
+        addon_version: str,
     ) -> None:
         self._prev_video_mode = "2D"
 
-        self._addon = addon
+        self._addon_version = addon_version
         self._client = api_client
         self._settings = settings_manager
         self._logger = logger
@@ -29,7 +31,7 @@ class Hyperion:
         self._video_mode_fn = get_video_mode_function
 
         self._kodi_state: str = "menu"
-        self._prev_comp_state = None
+        self._prev_comp_state: bool | None = None
         self._initialize()
 
     def _initialize(self) -> None:
@@ -41,7 +43,7 @@ class Hyperion:
         # check for setup wizard
         if settings.first_run:
             # be sure to fill in the current version
-            settings.set_addon_version(self._addon.getAddonInfo('version'))
+            settings.set_addon_version(self._addon_version)
             self._gui.do_initial_wizard()
 
         if settings.enable_hyperion:
@@ -49,6 +51,7 @@ class Hyperion:
         settings.set_first_run_done()
 
     def notify(self, command: str) -> None:
+        """Process the commands sent by the observables."""
         if self._settings.debug:
             self._logger.log(f"received command: {command}")
         if command == "updateSettings":
@@ -58,7 +61,7 @@ class Hyperion:
         self._update_state()
 
     def update_settings(self) -> None:
-        # update settings, update the connection and updateState().
+        """Update the settings."""
         settings = self._settings
         settings.read_settings()
 

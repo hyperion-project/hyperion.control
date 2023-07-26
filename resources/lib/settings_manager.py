@@ -1,8 +1,10 @@
+"""Settings manager."""
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
+from typing import Any
 
-from resources.lib.logger import Logger
+from resources.lib.interfaces import Logger
 
 if TYPE_CHECKING:
     import xbmcaddon
@@ -49,33 +51,39 @@ class SettingsManager:
 
     @property
     def address(self) -> str:
+        """Hyperion server address."""
         return self._address
 
     @address.setter
     def address(self, value: str) -> None:
+        """Hyperion server address."""
         self._address = value
         self._update_url()
-        self._set_string('ip', value)
+        self._set_string("ip", value)
 
     @property
     def port(self) -> int:
+        """Hyperion server port."""
         return self._port
 
     @port.setter
     def port(self, value: int) -> None:
+        """Hyperion server port."""
         self._port = value
         self._update_url()
-        self._set_int('port', value)
+        self._set_int("port", value)
 
     def _update_url(self) -> None:
         self._base_url = f"http://{self._address}:{self._port}/json-rpc"
 
     @property
     def base_url(self) -> str:
+        """Hyperion server JSON RPC base url."""
         return self._base_url
 
     @property
     def should_display_changelog(self) -> bool:
+        """Whether the changelog should be displayed."""
         return self.show_changelog_on_update and not self.first_run
 
     def _set_string(self, name: str, value: str) -> None:
@@ -100,41 +108,47 @@ class SettingsManager:
             self._logger.log(f"Set {name} to {value}")
 
     def set_tasks(self, value: int) -> None:
+        """Sets the tasks to run."""
         self._set_int("tasks", value)
-        # self.tasks = 0
+        self.tasks = value
 
     def set_addon_version(self, value: str) -> None:
-        self._set_string('currAddonVersion', value)
+        """Sets the current addon version for changelog checks."""
+        self._set_string("currAddonVersion", value)
+        self.current_version = value
 
     def set_first_run_done(self) -> None:
-        self._set_bool('firstRun', False)
+        """Sets the first run settings to false."""
+        self._set_bool("firstRun", False)
         self.first_run = False
 
     def read_settings(self) -> None:
-        """Read all settings"""
+        """Read all settings."""
         settings = self._settings
         get_bool = settings.getBool
         get_string = settings.getString
         get_int = settings.getInt
-        self._address = get_string('ip')
-        self._port = get_int('port')
+        self._address = get_string("ip")
+        self._port = get_int("port")
         self._update_url()
-        self.auth_token = get_string('authToken')
-        self.video_mode_enabled = get_bool('videoModeEnabled')
-        self.enable_hyperion = get_bool('enableHyperion')
-        self.disable_hyperion = get_bool('disableHyperion')
-        self.show_changelog_on_update = get_bool('showChangelogOnUpdate')
-        self.debug = get_bool('debug')
-        self.first_run = get_bool('firstRun')
-        self.current_version = get_string('currAddonVersion')
+        self.auth_token = get_string("authToken")
+        self.video_mode_enabled = get_bool("videoModeEnabled")
+        self.enable_hyperion = get_bool("enableHyperion")
+        self.disable_hyperion = get_bool("disableHyperion")
+        self.show_changelog_on_update = get_bool("showChangelogOnUpdate")
+        self.debug = get_bool("debug")
+        self.first_run = get_bool("firstRun")
+        self.current_version = get_string("currAddonVersion")
 
-        self.target_comp = INT_TO_COMP_STRING.get(get_int('targetComponent'), "NOT_FOUND")
-        self.video_enabled = get_bool('videoEnabled')
-        self.audio_enabled = get_bool('audioEnabled')
-        self.pause_enabled = get_bool('pauseEnabled')
-        self.menu_enabled = get_bool('menuEnabled')
-        self.screensaver_enabled = get_bool('screensaverEnabled')
-        self.tasks = get_int('tasks')
+        self.target_comp = INT_TO_COMP_STRING.get(
+            get_int("targetComponent"), "NOT_FOUND"
+        )
+        self.video_enabled = get_bool("videoEnabled")
+        self.audio_enabled = get_bool("audioEnabled")
+        self.pause_enabled = get_bool("pauseEnabled")
+        self.menu_enabled = get_bool("menuEnabled")
+        self.screensaver_enabled = get_bool("screensaverEnabled")
+        self.tasks = get_int("tasks")
         self.rev += 1
 
         if self.debug:
@@ -142,20 +156,20 @@ class SettingsManager:
 
     def _log_settings(self) -> None:
         log = self._logger.log
-        log('Settings updated!')
-        log(f'Hyperion ip:           {self.address}')
-        log(f'Hyperion port:         {self.port}')
-        log(f'Enable H on start:     {self.enable_hyperion}')
-        log(f'Disable H on stop:     {self.disable_hyperion}')
-        log(f'VideoMode enabled:     {self.video_mode_enabled}')
-        log(f'Hyperion target comp:  {self.target_comp}')
-        log(f'Screensaver enabled:   {self.screensaver_enabled}')
-        log(f'Video enabled:         {self.video_enabled}')
-        log(f'Audio enabled:         {self.audio_enabled}')
-        log(f'Pause enabled:         {self.pause_enabled}')
-        log(f'Menu enabled:          {self.menu_enabled}')
-        log(f'Debug enabled:         {self.debug}')
-        log(f'ChangelogOnUpdate:     {self.show_changelog_on_update}')
-        log(f'tasks:                 {self.tasks}')
-        log(f'first run:             {self.first_run}')
-        log(f'current version:       {self.current_version}')
+        log("Settings updated!")
+        log(f"Hyperion ip:           {self.address}")
+        log(f"Hyperion port:         {self.port}")
+        log(f"Enable H on start:     {self.enable_hyperion}")
+        log(f"Disable H on stop:     {self.disable_hyperion}")
+        log(f"VideoMode enabled:     {self.video_mode_enabled}")
+        log(f"Hyperion target comp:  {self.target_comp}")
+        log(f"Screensaver enabled:   {self.screensaver_enabled}")
+        log(f"Video enabled:         {self.video_enabled}")
+        log(f"Audio enabled:         {self.audio_enabled}")
+        log(f"Pause enabled:         {self.pause_enabled}")
+        log(f"Menu enabled:          {self.menu_enabled}")
+        log(f"Debug enabled:         {self.debug}")
+        log(f"ChangelogOnUpdate:     {self.show_changelog_on_update}")
+        log(f"tasks:                 {self.tasks}")
+        log(f"first run:             {self.first_run}")
+        log(f"current version:       {self.current_version}")

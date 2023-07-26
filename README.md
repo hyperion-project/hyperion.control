@@ -8,6 +8,7 @@ Hyperion Control is an addon for Kodi Mediacenter that observes Kodi events (pla
 For example playing a video should enable screen capture, if you pause the video or you are at the Kodi menu the screen capture should be disabled to show a background effect as mood light
 
 ### Features
+
 - Supports various Hyperion components
 - Setup wizard with Hyperion Server detection (zero configuration)
 - Token Authorization (optional)
@@ -16,9 +17,11 @@ For example playing a video should enable screen capture, if you pause the video
 - Execute from settings dialog: Hyperion Server detection
 
 ### Installation
+
 - Download .zip from release page and use "Install from zip file" dialog at the Kodi addons section.
 
 ### Credits
+
 - Dan Krause for the SSDP client
 - Paulchen-Panther for service development
 - brindosch for service development

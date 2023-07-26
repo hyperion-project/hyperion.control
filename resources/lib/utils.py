@@ -1,15 +1,18 @@
+"""Stereoscopic mode detection."""
 import json
+
 import xbmc
 
-from resources.lib.logger import Logger
+from resources.lib.interfaces import Logger
 
 
-def get_stereoscopic_mode(logger: Logger):
+def get_stereoscopic_mode(logger: Logger) -> str:
+    """Returns the currently active stereoscopic mode."""
     msg = {
         "jsonrpc": "2.0",
-        "method":"GUI.GetProperties",
+        "method": "GUI.GetProperties",
         "params": {"properties": ["stereoscopicmode"]},
-        "id": 669
+        "id": 669,
     }
     try:
         response = json.loads(xbmc.executeJSONRPC(json.dumps(msg)))

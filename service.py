@@ -1,5 +1,5 @@
+"""Hyperion control addon entrypoint."""
 import xbmcaddon
-
 from resources.lib.api_client import ApiClient
 from resources.lib.gui import GuiHandler
 from resources.lib.hyperion import Hyperion
@@ -10,20 +10,23 @@ from resources.lib.settings_manager import SettingsManager
 from resources.lib.utils import get_stereoscopic_mode
 
 
-def main():
-    addon = xbmcaddon.Addon()
-    logger = Logger(addon.getAddonInfo('name'))
+def main() -> None:
+    addon = xbmcaddon.Addon("script.service.hyperion-control")
+    logger = Logger(addon.getAddonInfo("name"))
     settings_manager = SettingsManager(addon.getSettings(), logger)
     gui_handler = GuiHandler(addon, settings_manager)
     api_client = ApiClient(logger, gui_handler, settings_manager)
-    get_video_mode_fn = lambda: get_stereoscopic_mode(logger)
+
+    def get_video_mode_fn() -> str:
+        return get_stereoscopic_mode(logger)
+
     hyperion = Hyperion(
-        addon,
         settings_manager,
         logger,
         gui_handler,
         api_client,
         get_video_mode_fn,
+        addon.getAddonInfo("version"),
     )
     player = Player()
     player.register_observer(hyperion)
@@ -36,5 +39,5 @@ def main():
             break
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
