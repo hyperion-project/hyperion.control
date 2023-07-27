@@ -34,26 +34,48 @@ class _FakeSocket(BytesIO):
         return self
 
 
+def _parse_location(location: str | None) -> tuple[str, int]:
+    if location is None:
+        return "", 0
+    start = location.find("//") + 2
+    end = location.rfind("/")
+    hostname, port = location[start:end].split(":")
+    return hostname, int(port)
+
+
 class SSDPResponse:
-    """Response from SSDP discovery."""
+    """
+    Response from SSDP discovery.
+
+    Typical Hyperion response:
+
+    CACHE-CONTROL: max-age = 1800
+    DATE: Sun, 23 Jul 2023 19:58:01 G7T19444
+    EXT:
+    LOCATION: http://192.168.2.180:8090/description.xml
+    SERVER: LibreELEC (official): 11.0.1/11.0 UPnP/1.0 Hyperion/2.0.16-beta.1+PR1617
+    ST: urn:hyperion-project.org:device:basic:1
+    USN: uuid:04928741-2192-5c24-93e6-638c9a184443
+    HYPERION-FBS-PORT: 19400
+    HYPERION-JSS-PORT: 19444
+    HYPERION-NAME: My Hyperion Config
+    """
 
     def __init__(self, response: bytes) -> None:
         r = http.client.HTTPResponse(_FakeSocket(response))  # type: ignore
         r.begin()
-        self.location = r.getheader("location")
+        hostname, port = _parse_location(r.getheader("location"))
+        self.hostname = hostname
+        self.port = port
         self.usn = r.getheader("usn")
         self.st = r.getheader("st")
         cache = r.getheader("cache-control")
         self.cache = cache.split("=")[1] if cache else ""
 
-    def __repr__(self) -> str:
-        """Response representation."""
-        return f"<SSDPResponse({self.location}, {self.st}, {self.usn})>"
-
 
 def discover(
     service: str, timeout: int = 3, retries: int = 1, mx: int = 2
-) -> list[dict[str, str | int | None]]:
+) -> list[dict[str, Any]]:
     group = ("239.255.255.250", 1900)
     lines = [
         "M-SEARCH * HTTP/1.1",
@@ -74,12 +96,15 @@ def discover(
         sock.sendto(message, group)
         while True:
             try:
-                response, address = sock.recvfrom(1024)
-                res_data = SSDPResponse(response)
+                res_data = SSDPResponse(sock.recv(1024))
                 if res_data.st != service:
                     continue
                 responses.append(
-                    {"ip": address[0], "port": address[1], "usn": res_data.usn}
+                    {
+                        "ip": res_data.hostname,
+                        "port": res_data.port,
+                        "usn": res_data.usn,
+                    }
                 )
             except socket.timeout:
                 break
