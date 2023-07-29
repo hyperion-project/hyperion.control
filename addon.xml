@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="script.service.hyperion-control" name="Hyperion Control" version="19.0.2" provider-name="hyperion-project">
+<addon id="script.service.hyperion-control" name="Hyperion Control" version="20.0.0" provider-name="hyperion-project">
   <requires>
 	<import addon="xbmc.addon"  version="20.0.0"/>
     <import addon="xbmc.python" version="3.0.1"/>
@@ -18,6 +18,10 @@
     <website>https://hyperion-project.org/forum</website>
     <source>https://github.com/hyperion-project/hyperion.control</source>
     <news>
+      20.0.0
+      - Kodi 20 (Nexus) support
+      - major refactor to adhere to SOLID principles
+
       19.0.2
       - New languages: Español, Français, Polski
 

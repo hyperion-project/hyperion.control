@@ -9,3 +9,4 @@ Desktop.ini
 *.pyo
 __pycache__
 .idea
+Pipfile.lock
