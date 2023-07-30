@@ -76,7 +76,7 @@ class ApiClient:
             "command": "componentstate",
             "componentstate": {"component": component, "state": state},
         }
-        if component in {"GRABBER", "V4L", "FORWARDER"}:
+        if component == "FORWARDER":
             self.switch_to_instance(0)
             self._send(body)
         else:
