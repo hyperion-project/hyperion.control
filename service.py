@@ -9,9 +9,11 @@ from resources.lib.player import Player
 from resources.lib.settings_manager import SettingsManager
 from resources.lib.utils import get_stereoscopic_mode
 
+ADDON_NAME = "script.service.hyperion-control"
+
 
 def main() -> None:
-    addon = xbmcaddon.Addon("script.service.hyperion-control")
+    addon = xbmcaddon.Addon(ADDON_NAME)
     logger = Logger(addon.getAddonInfo("name"))
     settings_manager = SettingsManager(addon.getSettings(), logger, addon)
     gui_handler = GuiHandler(addon, settings_manager)

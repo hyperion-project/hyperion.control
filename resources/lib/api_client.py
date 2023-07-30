@@ -2,12 +2,13 @@
 from __future__ import annotations
 
 import contextlib
-import json
 import random
 import string
+from json import JSONDecodeError
 from typing import Any
 
 import requests
+from requests.exceptions import ConnectTimeout
 
 from resources.lib.interfaces import GuiHandler
 from resources.lib.interfaces import Logger
@@ -23,6 +24,7 @@ class ApiClient:
         self._settings = settings
         self._logger = logger
         self._gui = gui
+        self._session = requests.Session()
 
     @property
     def headers(self) -> dict[str, str]:
@@ -32,26 +34,28 @@ class ApiClient:
             headers["Authorization"] = f"token {self._settings.auth_token}"
         return headers
 
-    def _send(self, body: dict[str, Any]) -> dict[str, Any] | None:
+    def _send(
+        self, body: dict[str, Any], timeout: float = 0.5
+    ) -> dict[str, Any] | None:
         url = self._settings.base_url
         logger = self._logger
         logger.log(f"Send to: {url} payload: {body}")
-        with contextlib.suppress(Exception):
-            response, content = requests.post(  # noqa: S113
-                url, json.dumps(body), headers=self.headers
+        with contextlib.suppress(ConnectTimeout, JSONDecodeError):
+            response = self._session.post(
+                url, json=body, headers=self.headers, timeout=timeout
             )
-            json_content = json.loads(content)
-            if json_content["success"]:
-                return json_content
+            json_content = response.json()
+            if json_content.get("success"):
+                return json_content.get("info")
             if json_content["error"] == "No Authorization":
                 self._gui.notify_text("Error: No Authorization, API Token required")
-                logger.error(json_content["error"])
+            logger.error(json_content["error"])
         return None
 
     def needs_auth(self) -> bool:
         """Whether the hyperion server needs API authentication."""
         if res := self._send({"command": "authorize", "subcommand": "tokenRequired"}):
-            return res["info"]["required"]
+            return res["required"]
         return False
 
     def get_token(self) -> str:
@@ -64,8 +68,7 @@ class ApiClient:
             "comment": "Kodi Hyperion Control",
             "id": control_code,
         }
-        # TODO: set timeout to 180 seconds
-        return res["info"]["token"] if (res := self._send(message)) else ""
+        return res["token"] if (res := self._send(message, timeout=180)) else ""
 
     def send_component_state(self, component: str, state: bool) -> None:
         """Sends the component state."""
@@ -73,8 +76,33 @@ class ApiClient:
             "command": "componentstate",
             "componentstate": {"component": component, "state": state},
         }
-        self._send(body)
+        if component in {"GRABBER", "V4L", "FORWARDER"}:
+            self.switch_to_instance(0)
+            self._send(body)
+        else:
+            self.send_to_all_instances(body)
 
     def send_video_mode(self, mode: str) -> None:
         """Sends the current video mode."""
         self._send({"command": "videoMode", "videoMode": mode})
+
+    def get_server_info(self) -> dict[str, Any] | None:
+        """Gets the server info."""
+        return self._send({"command": "serverinfo"})
+
+    def get_instances(self) -> list[dict[str, Any]]:
+        """Gets the server info."""
+        server_info = self.get_server_info()
+        return server_info["instance"] if server_info else []
+
+    def switch_to_instance(self, instance_num: int) -> None:
+        """Switches to the specified instance."""
+        self._send(
+            {"command": "instance", "subcommand": "switchTo", "instance": instance_num}
+        )
+
+    def send_to_all_instances(self, body: dict[str, Any]) -> None:
+        """Sends a command to all instances."""
+        for instance in self.get_instances():
+            self.switch_to_instance(instance["instance"])
+            self._send(body)
