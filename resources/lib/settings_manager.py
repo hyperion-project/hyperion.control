@@ -13,12 +13,13 @@ if TYPE_CHECKING:
 INT_TO_COMP_STRING = {
     0: "GRABBER",
     1: "V4L",
-    2: "LEDDEVICE",
-    3: "SMOOTHING",
-    4: "BLACKBORDER",
-    5: "FORWARDER",
-    6: "BOBLIGHTSERVER",
-    7: "ALL",
+    2: "AUDIO",
+    3: "LEDDEVICE",
+    4: "SMOOTHING",
+    5: "BLACKBORDER",
+    6: "FORWARDER",
+    7: "BOBLIGHTSERVER",
+    8: "ALL",
 }
 
 

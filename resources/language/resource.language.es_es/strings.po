@@ -123,6 +123,11 @@ msgid "Hyperion"
 msgstr "Hyperion"
 
 #:
+msgctxt "#32048"
+msgid "Audio Capture"
+msgstr "Captura del Audio"
+
+#:
 msgctxt "#32101"
 msgid "Would you like to search for a Hyperion Server and adjust settings?"
 msgstr "¿Desea buscar un Servidor Hyperion y ajustar la configuración?"
