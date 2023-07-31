@@ -1,4 +1,4 @@
-# Hyperion Control for Kodi 19 (Matrix)
+# Hyperion Control for Kodi 20 (Nexus)
 
 [![Latest-Release](https://img.shields.io/github/v/release/hyperion-project/hyperion.control?include_prereleases)](https://github.com/hyperion-project/hyperion.control/releases)
 [![Join Translation](https://img.shields.io/badge/POEditor-translate-green.svg)](https://poeditor.com/join/project?hash=WauIsJeEx4)
@@ -9,7 +9,7 @@ For example playing a video should enable screen capture, if you pause the video
 
 ### Features
 
-- Supports various Hyperion components
+- Supports various Hyperion components accross multiple instances
 - Setup wizard with Hyperion Server detection (zero configuration)
 - Token Authorization (optional)
 - Languages: English, German, Spanish, French, Polish
@@ -26,3 +26,4 @@ For example playing a video should enable screen capture, if you pause the video
 - Paulchen-Panther for service development
 - brindosch for service development
 - derBernhard for Kodi 19 migration
+- sanzoghenzo Kodi 20 (Nexus) support and major refactoring
