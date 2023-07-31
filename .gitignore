@@ -10,3 +10,5 @@ Desktop.ini
 __pycache__
 .idea
 Pipfile.lock
+.mypy_cache
+.ruff_cache

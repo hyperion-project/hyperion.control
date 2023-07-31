@@ -37,8 +37,7 @@ class GuiHandler:
 
     def do_ssdp_discovery(self) -> None:
         """Perform the SSDP discovery and lets the user choose the service."""
-        search_target = "urn:hyperion-project.org:device:basic:1"
-        servers = ssdp.discover(search_target)
+        servers = ssdp.discover()
 
         if not servers:
             self._dialog.ok("Hyperion Control", self._get_localized_string(32104))
