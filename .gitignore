@@ -8,3 +8,5 @@ Desktop.ini
 # python
 *.pyo
 __pycache__
+.idea
+Pipfile.lock
