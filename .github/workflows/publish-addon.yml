@@ -20,7 +20,7 @@ jobs:
         pip install -q kodi-addon-checker
     - name: Check with addon-checker
       run: |
-        kodi-addon-checker --branch $TARGET_KODI_VER --allow-folder-id-mismatch .
+        kodi-addon-checker --branch $TARGET_KODI_VER --allow-folder-id-mismatch $ADDON_NAME
 
   publish:
     runs-on: ubuntu-latest

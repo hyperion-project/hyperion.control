@@ -73,9 +73,8 @@ class SSDPResponse:
         self.cache = cache.split("=")[1] if cache else ""
 
 
-def discover(
-    service: str, timeout: int = 3, retries: int = 1, mx: int = 2
-) -> list[dict[str, Any]]:
+def discover(timeout: int = 3, retries: int = 1, mx: int = 2) -> list[dict[str, Any]]:
+    service = "urn:hyperion-project.org:device:basic:1"
     group = ("239.255.255.250", 1900)
     lines = [
         "M-SEARCH * HTTP/1.1",
