@@ -42,4 +42,4 @@ jobs:
       env:
         GH_USERNAME: ${{ github.actor }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        EMAIL: ""
+        EMAIL: "${{ github.actor }}@users.noreply.github.com"
