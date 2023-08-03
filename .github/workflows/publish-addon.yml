@@ -38,8 +38,12 @@ jobs:
         pip install -q git+https://github.com/xbmc/kodi-addon-submitter.git
     - name: Submit addon
       run: |
-        submit-addon -r repo-scripts -b $TARGET_KODI_VER -s --pull-request $ADDON_NAME
+        submit-addon -r repo-scripts -b $TARGET_KODI_VER -s -z --pull-request $ADDON_NAME
       env:
         GH_USERNAME: ${{ github.actor }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         EMAIL: "${{ github.actor }}@users.noreply.github.com"
+    - name: Publish release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "${ADDON_NAME}-*.zip"
