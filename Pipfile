@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pre-commit = "*"
+cfgv = "*"
 
 [dev-packages]
 kodistubs = "*"
