@@ -14,7 +14,6 @@ For example playing a video should enable screen capture, if you pause the video
 - Setup wizard with Hyperion Server detection (zero configuration)
 - Token Authorization (optional)
 - Languages: English, German, Spanish, French, Polish, Hungarian
-- Debug option with notifications
 - Execute from settings dialog: Hyperion Server detection
 
 ### Installation
